@@ -1,19 +1,19 @@
 {
   "$schema": "https://dl.viam.dev/module.schema.json",
-  "module_id": "NAMESPACE:MODULE",
+  "module_id": "viam:texas-instruments",
   "visibility": "public",
-  "url": "https://github.com/viam-modules/MODULE",
-  "description": "Go module for MODULE MODEL COMPONENT, compatible with Viam",
+  "url": "https://github.com/viam-modules/texas-instruments",
+  "description": "Go module for texas-instruments ti board, compatible with Viam",
   "models": [
     {
-      "api": "rdk:component:COMPONENT",
-      "model": "NAMESPACE:MODULE:MODEL"
+      "api": "rdk:component:board",
+      "model": "viam:texas-instruments:ti"
     }
   ],
   "build": {
     "build": "make module",
     "path": "bin/module.tar.gz",
-    "arch" : ["linux/arm64", "linux/amd64", "darwin/arm64"]
+    "arch" : ["linux/arm64"]
   },
-  "entrypoint": "bin/MODULE"
+  "entrypoint": "bin/texas-instruments"
 }
