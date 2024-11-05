@@ -3,11 +3,12 @@ package main
 
 import (
 	"context"
+	"texas-instruments/ti"
+
 	"go.viam.com/rdk/components/board"
 	"go.viam.com/rdk/logging"
 	"go.viam.com/rdk/module"
 	"go.viam.com/utils"
-	"texas-instruments/ti"
 )
 
 func main() {
