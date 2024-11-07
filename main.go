@@ -8,6 +8,7 @@ import (
 	"texas-instruments/ti"
 
 	"go.viam.com/rdk/components/board"
+	"go.viam.com/rdk/components/powersensor"
 	"go.viam.com/rdk/logging"
 	"go.viam.com/rdk/module"
 	"go.viam.com/utils"
@@ -27,11 +28,11 @@ func mainWithArgs(ctx context.Context, args []string, logger logging.Logger) err
 		return err
 	}
 
-	if err = module.AddModelFromRegistry(ctx, board.API, ina.Model219); err != nil {
+	if err = module.AddModelFromRegistry(ctx, powersensor.API, ina.Model219); err != nil {
 		return err
 	}
 
-	if err = module.AddModelFromRegistry(ctx, board.API, ina.Model226); err != nil {
+	if err = module.AddModelFromRegistry(ctx, powersensor.API, ina.Model226); err != nil {
 		return err
 	}
 
