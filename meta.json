@@ -3,11 +3,19 @@
   "module_id": "viam:texas-instruments",
   "visibility": "public",
   "url": "https://github.com/viam-modules/texas-instruments",
-  "description": "Go module for texas-instruments ti board, compatible with Viam",
+  "description": "Go module for texas-instruments ti board and texas-instruments ina219 and ina226 power sensors, compatible with Viam",
   "models": [
     {
       "api": "rdk:component:board",
       "model": "viam:texas-instruments:ti"
+    },
+    {
+      "api": "rdk:component:power_sensor",
+      "model": "viam:texas-instruments:ina219"
+    },
+    {
+      "api": "rdk:component:power_sensor",
+      "model": "viam:texas-instruments:ina226"
     }
   ],
   "build": {

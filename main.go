@@ -3,6 +3,8 @@ package main
 
 import (
 	"context"
+
+	"texas-instruments/ina"
 	"texas-instruments/ti"
 
 	"go.viam.com/rdk/components/board"
@@ -22,6 +24,14 @@ func mainWithArgs(ctx context.Context, args []string, logger logging.Logger) err
 	}
 
 	if err = module.AddModelFromRegistry(ctx, board.API, ti.Model); err != nil {
+		return err
+	}
+
+	if err = module.AddModelFromRegistry(ctx, board.API, ina.Model219); err != nil {
+		return err
+	}
+
+	if err = module.AddModelFromRegistry(ctx, board.API, ina.Model226); err != nil {
 		return err
 	}
 

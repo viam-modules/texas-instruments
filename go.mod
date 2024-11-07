@@ -5,6 +5,8 @@ go 1.23.0
 require (
 	github.com/AlekSi/gocov-xml v1.0.0
 	github.com/axw/gocov v1.1.0
+	github.com/d2r2/go-i2c v0.0.0-20191123181816-73a8a799d6bc
+	github.com/d2r2/go-logger v0.0.0-20210606094344-60e9d1233e22
 	github.com/edaniels/golinters v0.0.5-0.20220906153528-641155550742
 	github.com/fullstorydev/grpcurl v1.8.6
 	github.com/golangci/golangci-lint v1.61.0
