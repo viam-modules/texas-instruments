@@ -4,8 +4,8 @@ package main
 import (
 	"context"
 
-	"texas-instruments/ina"
-	"texas-instruments/ti"
+	"github.com/viam-modules/texas-instruments/ina"
+	"github.com/viam-modules/texas-instruments/ti"
 
 	"go.viam.com/rdk/components/board"
 	"go.viam.com/rdk/components/powersensor"
