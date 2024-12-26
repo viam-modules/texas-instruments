@@ -1,4 +1,4 @@
-module texas-instruments
+module github.com/viam-modules/texas-instruments
 
 go 1.23.0
 
