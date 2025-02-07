@@ -4,9 +4,7 @@ This [texas-instruments module](https://app.viam.com/module/viam/texas-instrumen
 
 See [Configure your ti board](#Configure-your-ti-board) or [Configure your ina power sensor](#Configure-your-ina-power-sensor) for more information on configuring these components with Viam.
 
-## Configure your ti board
-
-### Setup
+## Setup your ti board
 
 Follow the [setup guide](https://docs.viam.com/installation/prepare/sk-tda4vm/) to prepare your TDA4VM for running `viam-server` before configuring a `ti` board.
 
@@ -15,6 +13,8 @@ Follow the [setup guide](https://docs.viam.com/installation/prepare/sk-tda4vm/) 
 
 Navigate to the [**CONFIGURE** tab](https://docs.viam.com/configure/) of your [machine](https://docs.viam.com/fleet/machines/) in the [Viam app](https://app.viam.com/).
 [Add board / texas-instruments:ti to your machine](https://docs.viam.com/configure/#components).
+
+## Configure your ti board
 
 ### Attributes
 
@@ -26,7 +26,7 @@ The following attributes are available for `viam:texas-instruments:ti` boards:
 
 For instructions on implementing digital interrupts, see [Digital interrupt configuration](#Digital-interrupt-configuration).
 
-## Example configuration
+### Example configuration
 
 ### `viam:texas-instruments:ti`
 ```json
@@ -51,12 +51,7 @@ For instructions on implementing digital interrupts, see [Digital interrupt conf
   }
 ```
 
-### Next Steps
-- To test your board, expand the **TEST** section of its configuration pane or go to the [**CONTROL** tab](https://docs.viam.com/fleet/control/).
-- To write code against your board, use one of the [available SDKs](https://docs.viam.com/sdks/).
-- To view examples using a board component, explore [these tutorials](https://docs.viam.com/tutorials/).
-
-## Digital interrupt configuration
+### Digital interrupt configuration
 [Interrupts](https://en.wikipedia.org/wiki/Interrupt) are a method of signaling precise state changes.
 Configuring digital interrupts to monitor GPIO pins on your board is useful when your application needs to know precisely when there is a change in GPIO value between high and low.
 
@@ -102,13 +97,14 @@ The following attributes are available for `digital_interrupts`:
 ]
 ```
 
-## Configure your ina power sensor
-
+## Set up your ina power sensor
 > [!NOTE]
 > Before configuring your power sensor, you must [create a machine](https://docs.viam.com/cloud/machines/#add-a-new-machine).
 
 Navigate to the [**CONFIGURE** tab](https://docs.viam.com/configure/) of your [machine](https://docs.viam.com/fleet/machines/) in the [Viam app](https://app.viam.com/).
 To use the ina219 model, [add power_sensor / texas-instruments:ina219 to your machine](https://docs.viam.com/configure/#components). To use the ina226 model, [add power_sensor / texas-instruments:ina226 to your machine](https://docs.viam.com/configure/#components)
+
+## Configure your ina power sensor
 
 On the new component panel, copy and paste the following attribute template into your power sensor's attributes field:
 
@@ -126,14 +122,15 @@ On the new component panel, copy and paste the following attribute template into
 The following attributes are available for `viam:texas-instruments:ina219` and `viam:texas-instruments:ina226` power sensors:
 
 | Attribute | Type | Required? | Description |
-| `i2c_bus` | integer | **Required** | The index of the I<sup>2</sup>C bus that the sensor is connected to. |
-| `i2c_addr` | integer | Optional | The sensor's unique [I<sup>2</sup>C address](https://learn.adafruit.com/i2c-addresses/overview). <br>Default: `0x40` |
+| ---- | ---- | --------- | ----------- |
+| `i2c_bus` | integer | **Required** | The index of the i2c bus that the sensor is connected to. |
+| `i2c_addr` | integer | Optional | The sensor's unique [i2c address](https://learn.adafruit.com/i2c-addresses/overview). Default: `0x40` |
 | `max_current_amps` | float | Optional | Default: 3.2A. The maximum current that the sensor can measure in amperes (A). |
 | `shunt_resistance` | float | Optional | Default: 0.1Ω. The shunt resistance value of the sensor in Ohms (Ω). |
 
 Refer to your power sensor data sheet for specifics.
 
-## Example configuration
+### Example configuration
 
 For ina219 model, refer to the below example configuration. For ina226 model, you can still refer to the below example configuration, but change the `"model"` field to `"viam:texas-instruments:ina226"`
 
@@ -151,7 +148,7 @@ For ina219 model, refer to the below example configuration. For ina226 model, yo
   }
 ```
 
-### Next Steps
-- To test your power sensor, expand the **TEST** section of its configuration pane or go to the [**CONTROL** tab](https://docs.viam.com/fleet/control/).
-- To write code against your power sensor, use one of the [available SDKs](https://docs.viam.com/sdks/).
-- To view examples using a power sensor component, explore [these tutorials](https://docs.viam.com/tutorials/).
+## Next Steps
+- To test your board or power sensor, expand the **TEST** section of its configuration pane or go to the [**CONTROL** tab](https://docs.viam.com/fleet/control/).
+- To write code against your board or power sensor, use one of the [available SDKs](https://docs.viam.com/sdks/).
+- To view examples using a board or power sensor component, explore [these tutorials](https://docs.viam.com/tutorials/).

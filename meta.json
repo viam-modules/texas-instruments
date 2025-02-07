@@ -7,15 +7,21 @@
   "models": [
     {
       "api": "rdk:component:board",
-      "model": "viam:texas-instruments:ti"
+      "model": "viam:texas-instruments:ti",
+      "markdown_link": "README.md#configure-your-ti-board",
+      "short_description": "board model for the texas instruments TDA4VM board"
     },
     {
       "api": "rdk:component:power_sensor",
-      "model": "viam:texas-instruments:ina219"
+      "model": "viam:texas-instruments:ina219",
+      "markdown_link": "README.md#configure-your-ina-power-sensor",
+      "short_description": "power sensor model for ina219 digital power monitor"
     },
     {
       "api": "rdk:component:power_sensor",
-      "model": "viam:texas-instruments:ina226"
+      "model": "viam:texas-instruments:ina226",
+      "markdown_link": "README.md#configure-your-ina-power-sensor",
+      "short_description": "power sensor model for ina226 digital power monitor"
     }
   ],
   "build": {
