@@ -16,6 +16,27 @@ Navigate to the [**CONFIGURE** tab](https://docs.viam.com/configure/) of your [m
 
 ## Configure your ti board
 
+### Example configuration
+```json
+  {}
+```
+
+### Example configuration with optional digital interrupts
+```json
+{
+  "digital_interrupts": [
+    {
+      "name": "your-interrupt-1",
+      "pin": "15"
+    },
+    {
+      "name": "your-interrupt-2",
+      "pin": "16"
+    }
+  ]
+}
+```
+
 ### Attributes
 
 The following attributes are available for `viam:texas-instruments:ti` boards:
@@ -26,30 +47,6 @@ The following attributes are available for `viam:texas-instruments:ti` boards:
 
 For instructions on implementing digital interrupts, see [Digital interrupt configuration](#Digital-interrupt-configuration).
 
-### Example configuration
-
-### `viam:texas-instruments:ti`
-```json
-  {
-     "name": "<your-texas-instruments-ti-board-name>",
-      "model": "viam:texas-instruments:ti",
-      "type": "board",
-      "namespace": "rdk",
-      "attributes": {
-          "digital_interrupts": [
-          {
-            "name": "your-interrupt-1",
-            "pin": "15"
-          },
-          {
-            "name": "your-interrupt-2",
-            "pin": "16"
-          }
-        ]
-      },
-      "depends_on": []
-  }
-```
 
 ### Digital interrupt configuration
 [Interrupts](https://en.wikipedia.org/wiki/Interrupt) are a method of signaling precise state changes.
@@ -72,30 +69,15 @@ Integrate `digital_interrupts` into your machine in the `attributes` of your boa
 }
 ```
 
-### Attributes
+#### Attributes
 
 The following attributes are available for `digital_interrupts`:
 
-<!-- prettier-ignore -->
 | Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 |`name` | string | **Required** | Your name for the digital interrupt. |
 |`pin`| string | **Required** | The pin number of the board's GPIO pin that you wish to configure the digital interrupt for. |
 
-### Example configuration
-
-```json {class="line-numbers linkable-line-numbers"}
-"digital_interrupts": [
-  {
-    "name": "your-interrupt-1",
-    "pin": "15"
-  },
-  {
-    "name": "your-interrupt-2",
-    "pin": "16"
-  }
-]
-```
 
 ## Set up your ina power sensor
 > [!NOTE]
