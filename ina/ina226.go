@@ -42,7 +42,7 @@ func init() {
 				if err != nil {
 					return nil, err
 				}
-				return newINA(conf.ResourceName(), newConf, logger, modelName219)
+				return newINA(conf.ResourceName(), newConf, logger, modelName226)
 			},
 		})
 }
