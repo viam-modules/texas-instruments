@@ -123,13 +123,13 @@ func newINA(
 	var maxCurrent int64
 	switch modelName {
 	case modelName219:
-		// V_shunt for ina219 is 32mV
-		maxCurrent = toNano(float64(32) / fromNano(float64(resistance)))
+		// shunt voltage for ina219 is 320mV
+		maxCurrent = toNano(float64(0.320) / fromNano(float64(resistance)))
 	case modelName226:
-		// V_shunt for ina226 is 2.5mV
-		maxCurrent = toNano(float64(2.5) / fromNano(float64(resistance)))
+		// shunt voltage for ina226 is 81.92mV
+		maxCurrent = toNano(float64(0.08192) / fromNano(float64(resistance)))
 	}
-	logger.Infof("Maximum current: %d A", fromNano(float64(maxCurrent)))
+	logger.Infof("Maximum current: %f A", fromNano(float64(maxCurrent)))
 
 	busNumber, err := strconv.Atoi(conf.I2CBus)
 	if err != nil {
