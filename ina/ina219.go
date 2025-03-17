@@ -35,8 +35,8 @@ import (
 const (
 	modelName219         = "ina219"
 	modelName226         = "ina226"
-	Vshunt219            = 0.320
-	Vshunt226            = 0.08192
+	shuntV219            = 0.320   // shunt voltage for ina219 is 320mV
+	shuntV226            = 0.08192 // shunt voltage for ina226 is 81.92mV
 	defaultI2Caddr       = 0x40
 	configRegister       = 0x00
 	shuntVoltageRegister = 0x01
@@ -125,9 +125,9 @@ func newINA(
 	var maxCurrent int64
 	switch modelName {
 	case modelName219:
-		maxCurrent = toNano(float64(Vshunt219) / fromNano(float64(resistance)))
+		maxCurrent = toNano(float64(shuntV219) / fromNano(float64(resistance)))
 	case modelName226:
-		maxCurrent = toNano(float64(Vshunt226) / fromNano(float64(resistance)))
+		maxCurrent = toNano(float64(shuntV226) / fromNano(float64(resistance)))
 	}
 	logger.Infof("Maximum current: %f A", fromNano(float64(maxCurrent)))
 
