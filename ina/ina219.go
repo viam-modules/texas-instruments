@@ -35,6 +35,8 @@ import (
 const (
 	modelName219         = "ina219"
 	modelName226         = "ina226"
+	shuntV219            = 0.320   // shunt voltage for ina219 is 320mV
+	shuntV226            = 0.08192 // shunt voltage for ina226 is 81.92mV
 	defaultI2Caddr       = 0x40
 	configRegister       = 0x00
 	shuntVoltageRegister = 0x01
@@ -48,9 +50,6 @@ const (
 var (
 	senseResistor = toNano(0.1) // .1 ohm
 
-	maxCurrent219 = toNano(3.2) // 3.2 amp
-	maxCurrent226 = toNano(20)  // 20 amp
-
 	// need to scale, making sure to not overflow int64.
 	calibratescale219 = (toNano(1) * toNano(1) / 100000) << 12 // .04096 is internal fixed value for ina219
 	calibrateScale226 = (toNano(1) * toNano(1) / 100000) << 9  // .00512 is internal fixed value for ina226
@@ -63,7 +62,6 @@ var (
 type Config struct {
 	I2CBus          string  `json:"i2c_bus"`
 	I2cAddr         int     `json:"i2c_addr,omitempty"`
-	MaxCurrent      float64 `json:"max_current_amps,omitempty"`
 	ShuntResistance float64 `json:"shunt_resistance,omitempty"`
 }
 
@@ -118,23 +116,20 @@ func newINA(
 		logger.Infof("using i2c address : %d", defaultI2Caddr)
 	}
 
-	maxCurrent := toNano(conf.MaxCurrent)
-	if maxCurrent == 0 {
-		switch modelName {
-		case modelName219:
-			maxCurrent = maxCurrent219
-			logger.Info("using default max current 3.2A")
-		case modelName226:
-			maxCurrent = maxCurrent226
-			logger.Info("using default max current 20A")
-		}
-	}
-
 	resistance := toNano(conf.ShuntResistance)
 	if resistance == 0 {
 		resistance = senseResistor
 		logger.Info("using default resistor value 0.1 ohms")
 	}
+
+	var maxCurrent int64
+	switch modelName {
+	case modelName219:
+		maxCurrent = toNano(float64(shuntV219) / fromNano(float64(resistance)))
+	case modelName226:
+		maxCurrent = toNano(float64(shuntV226) / fromNano(float64(resistance)))
+	}
+	logger.Infof("Maximum current: %f A", fromNano(float64(maxCurrent)))
 
 	busNumber, err := strconv.Atoi(conf.I2CBus)
 	if err != nil {

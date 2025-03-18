@@ -94,7 +94,6 @@ On the new component panel, copy and paste the following attribute template into
 {
   "i2c_bus": <string>,
   "i2c-addr": <int>,
-  "max_current_amps": <float>,
   "shunt_resistance": <float>
 }
 ```
@@ -107,7 +106,6 @@ The following attributes are available for `viam:texas-instruments:ina219` and `
 | ---- | ---- | --------- | ----------- |
 | `i2c_bus` | string | **Required** | The index of the i2c bus that the sensor is connected to. |
 | `i2c_addr` | integer | Optional | The sensor's unique [i2c address](https://learn.adafruit.com/i2c-addresses/overview). Default: `0x40` |
-| `max_current_amps` | float | Optional | Default: 3.2A. The maximum current that the sensor can measure in amperes (A). |
 | `shunt_resistance` | float | Optional | Default: 0.1Ω. The shunt resistance value of the sensor in Ohms (Ω). |
 
 Refer to your power sensor data sheet for specifics.
