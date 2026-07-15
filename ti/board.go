@@ -19,10 +19,11 @@ const modelName = "ti"
 var Model = resource.NewModel("viam", "texas-instruments", "ti")
 
 func init() {
-	gpioMappings, err := genericlinux.GetGPIOBoardMappings(modelName, boardInfoMappings)
+	initLogger := logging.NewLogger("ti.init")
+	gpioMappings, err := genericlinux.GetGPIOBoardMappings(modelName, boardInfoMappings, initLogger)
 	var noBoardErr genericlinux.NoBoardFoundError
 	if errors.As(err, &noBoardErr) {
-		logging.Global().Debugw("error getting ti GPIO board mapping", "error", err)
+		initLogger.Debugw("error getting ti GPIO board mapping", "error", err)
 	}
 
 	resource.RegisterComponent(
