@@ -66,17 +66,16 @@ type Config struct {
 }
 
 // Validate ensures all parts of the config are valid.
-func (conf *Config) Validate(path string) ([]string, error) {
-	var deps []string
+func (conf *Config) Validate(path string) ([]string, []string, error) {
 	if conf.I2CBus == "" {
-		return nil, resource.NewConfigValidationFieldRequiredError(path, "i2c_bus")
+		return nil, nil, resource.NewConfigValidationFieldRequiredError(path, "i2c_bus")
 	}
 	// The bus should be numeric. We store it as a string for consistency with other components,
 	// but we convert it to an int later, so let's check on that now.
 	if _, err := strconv.Atoi(conf.I2CBus); err != nil {
-		return nil, fmt.Errorf("i2c_bus must be numeric, not '%s': %w", conf.I2CBus, err)
+		return nil, nil, fmt.Errorf("i2c_bus must be numeric, not '%s': %w", conf.I2CBus, err)
 	}
-	return deps, nil
+	return nil, nil, nil
 }
 
 func init() {
